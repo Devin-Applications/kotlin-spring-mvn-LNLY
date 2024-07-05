@@ -1,7 +1,9 @@
 package org.example.ktspringmvn.model
 
+import org.springframework.data.annotation.Id
+
 data class InventoryItem(
-    val id: Long,
+    @Id val id: Long,
     val name: String,
     val description: String,
     val price: Double,
