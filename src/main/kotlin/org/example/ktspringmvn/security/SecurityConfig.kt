@@ -14,6 +14,7 @@ class SecurityConfig {
 
     @Bean
     fun securityWebFilterChain(http: ServerHttpSecurity): SecurityWebFilterChain = http
+            .csrf().disable() // Disable CSRF protection
             .authorizeExchange { spec ->
                 // TODO: Change what URIs are allowed
                 spec.pathMatchers(
