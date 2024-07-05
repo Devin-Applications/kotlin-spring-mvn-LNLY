@@ -3,6 +3,7 @@ package org.example.ktspringmvn.controller
 import org.example.ktspringmvn.model.InventoryItem
 import org.example.ktspringmvn.service.InventoryItemService
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
@@ -32,7 +33,9 @@ class InventoryItemController(@Autowired private val service: InventoryItemServi
     }
 
     @DeleteMapping("/{id}")
-    fun deleteItem(@PathVariable id: Long): Mono<Void> {
+    fun deleteItem(@PathVariable id: Long): Mono<ResponseEntity<Void>> {
         return service.deleteItem(id)
+            .map { ResponseEntity.noContent().build<Void>() }
+            .defaultIfEmpty(ResponseEntity.notFound().build())
     }
 }
