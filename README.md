@@ -24,3 +24,30 @@ This example starts a basic [Kotlin Spring Boot](https://spring.io/projects/spri
 ### How to use
 - Click the Railway button to deploy the app
 - Clone the project and connect to it using `railway link`
+
+### API Endpoints
+
+#### List all inventory items
+```sh
+curl -X GET https://kotlin-spring-webflux-production-bf37.up.railway.app/api/inventory
+```
+
+#### Create a new inventory item
+```sh
+curl -X POST -H "Content-Type: application/json" -d '{"name":"New Item","description":"New description","price":10.0,"quantity":5}' https://kotlin-spring-webflux-production-bf37.up.railway.app/api/inventory
+```
+
+#### Retrieve an inventory item by ID
+```sh
+curl -X GET https://kotlin-spring-webflux-production-bf37.up.railway.app/api/inventory/{id}
+```
+
+#### Update an inventory item by ID
+```sh
+curl -X PUT -H "Content-Type: application/json" -d '{"name":"Updated Item","description":"Updated description","price":20.0,"quantity":15}' https://kotlin-spring-webflux-production-bf37.up.railway.app/api/inventory/{id}
+```
+
+#### Delete an inventory item by ID
+```sh
+curl -X DELETE https://kotlin-spring-webflux-production-bf37.up.railway.app/api/inventory/{id}
+```
